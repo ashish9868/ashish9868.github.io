@@ -125,7 +125,6 @@
                 case 'SPEAKER':
                     self.toggleInfoModal(true, "Testing speakers", "You will hear a sound, once contined, please confirm when asked.", function () {
                         self.toggleInfoModal(false)
-                        self.toggleConfirmationModal(false)
                         self.playSound(2000, function () {
                             self.toggleConfirmationModal(true, "Heard a sound?", "Please confirm if you've heard a sound?", function (status) {
                                 self.toggleConfirmationModal(false)
@@ -140,7 +139,6 @@
                 case 'CAMERA':
                     self.toggleInfoModal(true, "Testing camera access", "You will see a permission popup in your browser's left corner, please allow that to continue.", function () {
                         self.toggleInfoModal(false)
-                        self.toggleConfirmationModal(false)
                         self.checkCameraAccess(function (status, err) {
                             console.log(status, err)
                             self.addTestReport(Object.assign(test, {
@@ -153,7 +151,6 @@
                 case 'MICROPHONE':
                     self.toggleInfoModal(true, "Testing microphone access", "You will see a permission popup in your browser's left corner, please allow that to continue.", function () {
                         self.toggleInfoModal(false)
-                        self.toggleConfirmationModal(false)
                         self.checkMicroPhoneAccess(function (status) {
                             self.addTestReport(Object.assign(test, {
                                 result: status,
@@ -168,7 +165,27 @@
                         result: status,
                         message: "Popup(s) are " + (status ? "allowed" : "not allowed."),
                     }), index, testCompleteCallBack)
-
+                    break;
+                case 'ZOOM':
+                    self.toggleInfoModal(true, 'Zoom App Test', 'You\'ll see a open zoom app popup, please confirm wether zoom app has opened up successfully.', function () {
+                        self.toggleInfoModal(false)
+                        var newWin = window.open(test.url, '_blank', '')
+                        const opened = !(!newWin || newWin.closed || typeof newWin.closed == "undefined")
+                        if (!opened) {
+                            self.addTestReport(Object.assign(test, {
+                                result: false,
+                                message: "Popups were disabled, unable to check zoom status.",
+                            }), index, testCompleteCallBack)
+                        } else {
+                            self.toggleConfirmationModal(true, "Zoom app Opened?", "Please confirm if you were able to open zoom app?", function (status) {
+                                self.toggleConfirmationModal(false)
+                                self.addTestReport(Object.assign(test, {
+                                    result: status,
+                                    message: "Zoom app is " + (status ? "available." : "not available."),
+                                }), index, testCompleteCallBack)
+                            })
+                        }
+                    })
                     break;
                 default:
                     testCompleteCallBack()
@@ -269,7 +286,9 @@
                     if (self.index > self.config.tests.length - 1) {
                         self.index = 0
                         self.downloadReport(function () {
-                            alert("All tests were performed, successfully, output json generated succesfully.")
+                            self.toggleInfoModal(true, "Success", "All tests were performed, successfully, output json generated succesfully.", function () {
+                                self.toggleInfoModal(false)
+                            })
                         })
                     } else {
                         executeTest()
