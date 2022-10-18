@@ -235,7 +235,9 @@
                     }, 500);
                 })
                 .catch(function (err) {
-                    callback(false, err)
+                    setTimeout(function () {
+                        callback(false, err)
+                    }, 500);
                 });
         };
         this.checkCameraAccess = function (callback) {
@@ -250,7 +252,9 @@
                     }, 500);
                 })
                 .catch(function (err) {
-                    callback(false, err)
+                    setTimeout(function () {
+                        callback(false, err)
+                    }, 500);
                 });
         };
         this.begin = function () {
