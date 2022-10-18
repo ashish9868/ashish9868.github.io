@@ -1,0 +1,41 @@
+{
+    "tests": [
+        {
+            "type": "SYSTEMINFO",
+            "name": "Get System Information",
+            "description": "Getting system information such as OS, Architecture, Browser"
+        },
+        {
+            "type": "SPEAKER",
+            "name": "Test Speaker",
+            "description": "A sound is played for you, you will need to confirm wether speakers are working or not."
+        },
+        {
+            "type": "MICROPHONE",
+            "name": "Test Microphone Access",
+            "description": "Getting microphone access information."
+        },
+        {
+            "type": "CAMERA",
+            "name": "Test Camera Access",
+            "description": "Getting camera access information."
+        },
+        {
+            "type": "POPUP",
+            "name": "Testing Popups",
+            "description": "Checking wether popup(s) are allowed or not."
+        },
+        {
+            "type": "VALIDATE_URL",
+            "url": "http://google.com",
+            "name": "Test Google URL",
+            "description": "Verifying Google Url is up"
+        },
+        {
+            "type": "APP_VERIFICATION",
+            "name": "Verify Zoom App Installation",
+            "protocol": "zoom://",
+            "description": "Verify if zoom app is installed"
+        }
+    ]
+}
