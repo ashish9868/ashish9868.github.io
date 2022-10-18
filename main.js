@@ -74,15 +74,17 @@
                 testCompleteCallBack()
                 return false;
             }
-            console.log(index, 'fff', data)
             switch (test.type) {
                 case 'VALIDATE_URL':
-                    if (test.url && test.name) {
-                        self.validateUrl(test.url, function (xhr) {
-                            self.addTestReport(Object.assign(test, {
-                                result: xhr.status + "".indexOf("20") != -1,
-                                message: "URL StatusCode: " + xhr.status
-                            }), index, testCompleteCallBack)
+                    if (test.urls && test.name) {
+                        Promise.all(test.urls.map(function (urlInfo) {
+                            return self.validateUrl(urlInfo.url)
+                        })).then(function(data){
+                            console.log(data)
+                            // self.addTestReport(Object.assign(test, {
+                            //     result: xhr.status + "".indexOf("20") != -1,
+                            //     message: "URL StatusCode: " + xhr.status
+                            // }), index, testCompleteCallBack)
                         })
                     } else {
                         self.errors.push("Test: " + test.name + "do not have url or name key.");
@@ -149,19 +151,23 @@
                     testCompleteCallBack()
             }
         };
-        this.validateUrl = function (url, callback) {
-            $.ajax({
-                cache: false,
-                dataType: "jsonp",
-                async: true,
-                crossDomain: true,
-                url: url,
-                method: "GET",
-                headers: {
-                    accept: "application/json",
-                    "Access-Control-Allow-Origin": "*",
-                },
-                complete: callback,
+        this.validateUrl = function (url) {
+            return new Promise(function (resolve) {
+                $.ajax({
+                    cache: false,
+                    dataType: "jsonp",
+                    async: true,
+                    crossDomain: true,
+                    url: url,
+                    method: "GET",
+                    headers: {
+                        accept: "application/json",
+                        "Access-Control-Allow-Origin": "*",
+                    },
+                    complete: function(xhr) {
+                        resolve(xhr.status)
+                    },
+                })
             })
         };
         this.validateCookies = function () {

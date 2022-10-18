@@ -27,8 +27,50 @@
         },
         {
             "type": "VALIDATE_URL",
-            "url": "http://google.com",
-            "name": "Test Google URL",
+            "urls": [
+                {
+                    "url": "https://moodle.edulanding.com",
+                    "label": "https://Moodle Edulanding"
+                },
+                {
+                    "url": "https://myvsoe.maestrosis.com",
+                    "label": "Maestorsis"
+                }
+            ],
+            "name": "Test Group URL",
+            "description": "Verifying Google Url is up"
+        },
+        {
+            "type": "VALIDATE_URL",
+            "urls": [
+                {
+                    "url": "https://login.catholicvirtual.com",
+                    "label": "Catholic Virtual"
+                }
+            ],
+            "name": "Test URL",
+            "description": "Verifying Google Url is up"
+        },
+        {
+            "type": "VALIDATE_URL",
+            "urls": [
+                {
+                    "url": "https://agilixbuzz.com",
+                    "label": "Agilixbuzz Virtual"
+                }
+            ],
+            "name": "Test URL",
+            "description": "Verifying Google Url is up"
+        },
+        {
+            "type": "VALIDATE_URL",
+            "urls": [
+                {
+                    "url": "https://zoom.us",
+                    "label": "Zoom URL"
+                }
+            ],
+            "name": "Test URL: Zoom",
             "description": "Verifying Google Url is up"
         },
         {
