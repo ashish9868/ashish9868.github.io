@@ -74,6 +74,7 @@
                 testCompleteCallBack()
                 return false;
             }
+            console.log(index, 'fff', data)
             switch (test.type) {
                 case 'VALIDATE_URL':
                     if (test.url && test.name) {
@@ -111,6 +112,19 @@
                         })
                     })
                     break;
+                case 'CAMERA':
+                    self.toggleInfoModal(true, "Testing camera access", "You will see a permission popup in your browser's left corner, please allow that to continue.", function () {
+                        self.toggleInfoModal(false)
+                        self.toggleConfirmationModal(false)
+                        self.checkCameraAccess(function (status, err) {
+                            console.log(status, err)
+                            self.addTestReport(Object.assign(test, {
+                                result: status,
+                                message: "Camera status: " + (status ? "have access to camera" : "Either access is denied or system don't have camera."),
+                            }), index, testCompleteCallBack)
+                        })
+                    })
+                    break;
                 case 'MICROPHONE':
                     self.toggleInfoModal(true, "Testing microphone access", "You will see a permission popup in your browser's left corner, please allow that to continue.", function () {
                         self.toggleInfoModal(false)
@@ -119,18 +133,6 @@
                             self.addTestReport(Object.assign(test, {
                                 result: status,
                                 message: "Microphone status: " + (status ? "have access to microphone" : "Either access is denied or system don't have microphone."),
-                            }), index, testCompleteCallBack)
-                        })
-                    })
-                    break;
-                case 'CAMERA':
-                    self.toggleInfoModal(true, "Testing camera access", "You will see a permission popup in your browser's left corner, please allow that to continue.", function () {
-                        self.toggleInfoModal(false)
-                        self.toggleConfirmationModal(false)
-                        self.checkMicroPhoneAccess(function (status) {
-                            self.addTestReport(Object.assign(test, {
-                                result: status,
-                                message: "Camera status: " + (status ? "have access to camera" : "Either access is denied or system don't have camera."),
                             }), index, testCompleteCallBack)
                         })
                     })
@@ -220,22 +222,37 @@
         };
         this.begin = function () {
             var self = this;
-            var index = 0;
+            self.index = 0
             var executeTest = function () {
                 self.peformTest({
-                    index: index,
-                    test: self.config.tests[index],
+                    index: self.index,
+                    test: self.config.tests[self.index],
                 }, function () {
-                    console.log('finall callback')
-                    if (index <= self.config.tests.length - 1) {
-                        index = index + 1
-                        executeTest()
+                    self.index++;
+                    if (self.index > self.config.tests.length - 1) {
+                        self.index = 0
+                        self.downloadReport(function () {
+                            alert("All tests were performed, successfully, output json generated succesfully.")
+                        })
                     } else {
-                        alert("All tests were performed, successfully, generating output json.")
+                        executeTest()
                     }
                 })
             }
-            executeTest(index)
+            executeTest(self.index)
+        };
+        this.downloadReport = function (callback) {
+            var dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(this.testResults));
+            var dlAnchorElem = document.createElement('a');
+            dlAnchorElem.setAttribute("href", dataStr);
+            dlAnchorElem.setAttribute("download", "browserTestReport.json");
+            document.body.appendChild(dlAnchorElem)
+            dlAnchorElem.click();
+            setTimeout(function () {
+                document.body.removeChild(dlAnchorElem)
+                callback()
+            }, 500)
+
         }
     }
 
