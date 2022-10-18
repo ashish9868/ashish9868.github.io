@@ -9,14 +9,28 @@
 </head>
 
 <body>
-    <div id="playground">
-        <noscript>
-            <div class="noscriptmsg">
-                You don't have javascript enabled, Unable to continue without javascript, please enable javascript and
-                reload page to continue.
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                    <noscript>
+                        <div class="noscriptmsg">
+                            You don't have javascript enabled, Unable to continue without javascript, please enable
+                            javascript and
+                            reload page to continue.
+                        </div>
+                    </noscript>
+                    <ul id="reporting" class="list-group p-2">
+                        <li class="list-group-item d-none">
+                            <small class="title">Title</small>
+                            <div class="description">Description</div>
+                            <div class="result">result</div>
+                        </li>
+                    </ul>
+                </div>
             </div>
-        </noscript>
+        </div>
     </div>
+
     <div class="modal fade" id="modalConfirmation" tabindex="-1" role="dialog">
         <div class="modal-dialog" role="document">
             <div class="modal-content">

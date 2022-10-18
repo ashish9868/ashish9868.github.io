@@ -4,7 +4,7 @@
         var soundUrl = "/sample.mp3"
         var modalInformation = $('#modalInformation')
         var modelConfirmation = $('#modalConfirmation')
-        this.config = Object.assign({}, config)
+        this.config = Object.assign({ tests: [] }, config)
         this.testResults = [];
         this.errors = []
         this.toggleInfoModal = function (show, title, message, callbackOk) {
@@ -14,7 +14,7 @@
             if (show) {
                 modelTitle.html(title)
                 modelDescription.html(message)
-                okButton.on('click', function () {
+                okButton.unbind('click').on('click', function () {
                     callbackOk()
                 })
                 modalInformation.modal('show')
@@ -32,10 +32,10 @@
             if (show) {
                 modelTitle.html(title)
                 modelDescription.html(message)
-                okButton.on('click', function () {
+                okButton.unbind('click').on('click', function () {
                     callback(true)
                 })
-                cancelButton.on('click', function () {
+                cancelButton.unbind('click').on('click', function () {
                     callback(false)
                 })
                 modelConfirmation.modal('show')
@@ -44,45 +44,61 @@
                 modelDescription.html('')
                 modelConfirmation.modal('hide')
             }
-        }
-        this.peformTest = function (data) {
+        };
+        this.addTestReport = function (report, index, callback) {
+            var testReportContainer = $('#reporting')
+            var template = testReportContainer.find('li.d-none')
+            var reportItem = template.clone()
+            reportItem.removeClass('d-none')
+            reportItem.addClass('list-group-item' + (report.result ? 'success' : 'error'))
+            reportItem.find('.title').html(report.name)
+            reportItem.find('.description').html(report.description)
+            reportItem.find('.result').html("<strong>STATUS:</strong> " + report.result + ", <strong>DETAILS:</strong> " + report.message)
+            testReportContainer.append(reportItem)
+            this.testResults[index] = report
+            callback()
+        };
+        this.peformTest = function (data, testCompleteCallBack) {
             var index = data.index
             var test = data.test
             var self = this;
             if (!test || typeof test !== "object") {
+                testCompleteCallBack()
                 return false;
             }
             switch (test.type) {
                 case 'VALIDATE_URL':
                     if (test.url && test.name) {
                         self.validateUrl(test.url, function (xhr) {
-                            self.testResults[index] = Object.assign(test, {
+                            self.addTestReport(Object.assign(test, {
                                 result: xhr.status + "".indexOf("20") != -1,
                                 message: "URL StatusCode: " + xhr.status
-                            })
+                            }), index, testCompleteCallBack)
                         })
                     } else {
                         self.errors.push("Test: " + test.name + "do not have url or name key.");
+                        testCompleteCallBack()
                     }
                     break;
                 case 'SYSTEMINFO':
                     var info = self.getSystemInfo()
-                    self.testResults[index] = Object.assign(test, {
+                    self.addTestReport(Object.assign(test, {
                         result: true,
                         message: info.systemInfoString,
                         extra: info,
-                    })
+                    }), index, testCompleteCallBack)
                     break;
                 case 'SPEAKER':
                     self.toggleInfoModal(true, "Testing speakers", "You will hear a sound, once contined, please confirm when asked.", function () {
                         self.toggleInfoModal(false)
+                        self.toggleConfirmationModal(false)
                         self.playSound(2000, function () {
                             self.toggleConfirmationModal(true, "Heard a sound?", "Please confirm if you've heard a sound?", function (status) {
-                                self.testResults[index] = Object.assign(test, {
-                                    result: status,
-                                    message: "Speakers are " + (status ? "Working" : "Not Working."),
-                                })
                                 self.toggleConfirmationModal(false)
+                                self.addTestReport(Object.assign(test, {
+                                    result: status,
+                                    message: "Speakers are " + (status ? "working" : "not working."),
+                                }), index, testCompleteCallBack)
                             })
                         })
                     })
@@ -90,35 +106,35 @@
                 case 'MICROPHONE':
                     self.toggleInfoModal(true, "Testing microphone access", "You will see a permission popup in your browser's left corner, please allow that to continue.", function () {
                         self.toggleInfoModal(false)
+                        self.toggleConfirmationModal(false)
                         self.checkMicroPhoneAccess(function (status) {
-                            self.testResults[index] = Object.assign(test, {
+                            self.addTestReport(Object.assign(test, {
                                 result: status,
                                 message: "Microphone status: " + (status ? "have access to microphone" : "Either access is denied or system don't have microphone."),
-                            })
+                            }), index, testCompleteCallBack)
                         })
                     })
                     break;
                 case 'CAMERA':
                     self.toggleInfoModal(true, "Testing camera access", "You will see a permission popup in your browser's left corner, please allow that to continue.", function () {
                         self.toggleInfoModal(false)
+                        self.toggleConfirmationModal(false)
                         self.checkMicroPhoneAccess(function (status) {
-                            self.testResults[index] = Object.assign(test, {
+                            self.addTestReport(Object.assign(test, {
                                 result: status,
                                 message: "Camera status: " + (status ? "have access to camera" : "Either access is denied or system don't have camera."),
-                            })
+                            }), index, testCompleteCallBack)
                         })
                     })
                     break;
                 case 'POPUP':
                     var status = self.canOpenPopup()
-                    self.testResults[index] = Object.assign(test, {
+                    self.addTestReport(Object.assign(test, {
                         result: status,
-                        message: "Popup(s) are " + (status ? "Allowed" : "Not Allowed."),
-                    })
+                        message: "Popup(s) are " + (status ? "allowed" : "not allowed."),
+                    }), index, testCompleteCallBack)
 
                     break;
-                default:
-                    return false;
             }
         };
         this.validateUrl = function (url, callback) {
@@ -158,13 +174,11 @@
             return opened
         };
         this.playSound = function (timeMs, callback) {
-            var audio = document.getElementById('audioPlayer') ?? document.createElement('audio')
-            audio.id = "audioPlayer"
-            document.body.appendChild(audio)
-            audio.src = soundUrl
-            audio.autoplay = true;
+            var audio = new Audio(soundUrl)
+            audio.play()
             setTimeout(function () {
-                document.body.removeChild(audio)
+                audio.pause()
+                audio.currentTime = 0
                 callback()
             }, timeMs);
         };
@@ -196,12 +210,21 @@
         };
         this.begin = function () {
             var self = this;
-            this.config.tests.forEach(function (test, index) {
+            var executeTest = function (index) {
                 self.peformTest({
                     index: index,
-                    test: test
+                    test: self.config.tests[index],
+                }, function () {
+                    console.log(index, 'test')
+                    if (index < self.config.tests.length - 1) {
+                        index = index + 1
+                        executeTest(index)
+                    } else {
+                        alert("All tests were performed, successfully, generating output json.")
+                    }
                 })
-            })
+            }
+            executeTest(0)
         }
     }
 
