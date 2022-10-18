@@ -17,7 +17,11 @@
                 okButton.unbind('click').on('click', function () {
                     callbackOk()
                 })
-                modalInformation.modal('show')
+                modalInformation.modal({
+                    keyboard: false,
+                    show: true,
+                    backdrop: 'static'
+                })
             } else {
                 modelTitle.html('')
                 modelDescription.html('')
@@ -38,7 +42,11 @@
                 cancelButton.unbind('click').on('click', function () {
                     callback(false)
                 })
-                modelConfirmation.modal('show')
+                modelConfirmation.modal({
+                    keyboard: false,
+                    show: true,
+                    backdrop: 'static'
+                })
             } else {
                 modelTitle.html('')
                 modelDescription.html('')
@@ -50,7 +58,7 @@
             var template = testReportContainer.find('li.d-none')
             var reportItem = template.clone()
             reportItem.removeClass('d-none')
-            reportItem.addClass('list-group-item' + (report.result ? 'success' : 'error'))
+            reportItem.addClass('list-group-item-' + (report.result ? 'success' : 'danger'))
             reportItem.find('.title').html(report.name)
             reportItem.find('.description').html(report.description)
             reportItem.find('.result').html("<strong>STATUS:</strong> " + report.result + ", <strong>DETAILS:</strong> " + report.message)
@@ -135,6 +143,8 @@
                     }), index, testCompleteCallBack)
 
                     break;
+                default:
+                    testCompleteCallBack()
             }
         };
         this.validateUrl = function (url, callback) {
@@ -210,21 +220,22 @@
         };
         this.begin = function () {
             var self = this;
-            var executeTest = function (index) {
+            var index = 0;
+            var executeTest = function () {
                 self.peformTest({
                     index: index,
                     test: self.config.tests[index],
                 }, function () {
-                    console.log(index, 'test')
-                    if (index < self.config.tests.length - 1) {
+                    console.log('finall callback')
+                    if (index <= self.config.tests.length - 1) {
                         index = index + 1
-                        executeTest(index)
+                        executeTest()
                     } else {
                         alert("All tests were performed, successfully, generating output json.")
                     }
                 })
             }
-            executeTest(0)
+            executeTest(index)
         }
     }
 
