@@ -79,12 +79,18 @@
                     if (test.urls && test.name) {
                         Promise.all(test.urls.map(function (urlInfo) {
                             return self.validateUrl(urlInfo.url)
-                        })).then(function(data){
-                            console.log(data)
-                            // self.addTestReport(Object.assign(test, {
-                            //     result: xhr.status + "".indexOf("20") != -1,
-                            //     message: "URL StatusCode: " + xhr.status
-                            // }), index, testCompleteCallBack)
+                        })).then(function (statuses) {
+                            var urls = test.urls
+                            var messages = []
+                            statuses.forEach(function (val, index) {
+                                urls[index].status = val
+                                messages[index] = "URL: <a href='" + urls[index].url + "'>" + urls[index].label + "</a> " + "(" + urls[index].url + ")" + " | StatusCode: " + val
+                            })
+                            self.addTestReport(Object.assign(test, {
+                                result: "[" + statuses.join(",") + "]",
+                                message: "<br />" + messages.join("<br />"),
+                                urls: urls
+                            }), index, testCompleteCallBack)
                         })
                     } else {
                         self.errors.push("Test: " + test.name + "do not have url or name key.");
@@ -164,7 +170,7 @@
                         accept: "application/json",
                         "Access-Control-Allow-Origin": "*",
                     },
-                    complete: function(xhr) {
+                    complete: function (xhr) {
                         resolve(xhr.status)
                     },
                 })
@@ -207,7 +213,9 @@
                     tracks.forEach(function (track) {
                         track.stop()
                     })
-                    callback(true)
+                    setTimeout(function () {
+                        callback(true)
+                    }, 500);
                 })
                 .catch(function (err) {
                     callback(false, err)
@@ -220,7 +228,9 @@
                     tracks.forEach(function (track) {
                         track.stop()
                     })
-                    callback(true)
+                    setTimeout(function () {
+                        callback(true)
+                    }, 500);
                 })
                 .catch(function (err) {
                     callback(false, err)
