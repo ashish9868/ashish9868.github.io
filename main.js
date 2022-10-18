@@ -105,6 +105,23 @@
                         extra: info,
                     }), index, testCompleteCallBack)
                     break;
+                case 'COOKIE':
+                    console.log(window.cookies)
+                    var status = self.areCookiesEnabled(false)
+                    self.addTestReport(Object.assign(test, {
+                        result: status,
+                        message: "Browser cookies are " + (status ? 'enabled' : 'disabled'),
+                        extra: info,
+                    }), index, testCompleteCallBack)
+                    break;
+                case 'COOKIE':
+                    var status = self.areCookiesEnabled()
+                    self.addTestReport(Object.assign(test, {
+                        result: status,
+                        message: "Browser cookies are " + (status ? 'enabled' : 'disabled'),
+                        extra: info,
+                    }), index, testCompleteCallBack)
+                    break;
                 case 'SPEAKER':
                     self.toggleInfoModal(true, "Testing speakers", "You will hear a sound, once contined, please confirm when asked.", function () {
                         self.toggleInfoModal(false)
@@ -176,7 +193,7 @@
                 })
             })
         };
-        this.validateCookies = function () {
+        this.areCookiesEnabled = function () {
             return navigator.cookieEnabled
         };
         this.getSystemInfo = function () {
