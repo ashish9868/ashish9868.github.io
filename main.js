@@ -1,6 +1,6 @@
 (function () {
     var BrowserFeatureUtility = function (config = {}) {
-        var dummyUrl = "https://example.com"
+        var dummyUrl = "https://google.com"
         var soundUrl = "/sample.mp3"
         var modalInformation = $('#modalInformation')
         var modelConfirmation = $('#modalConfirmation')
@@ -82,13 +82,15 @@
                         })).then(function (statuses) {
                             var urls = test.urls
                             var messages = []
+                            var finalStatus = true
                             statuses.forEach(function (val, index) {
                                 urls[index].status = val
+                                finalStatus = finalStatus && ((val + "").indexOf("20") === 0)
                                 messages[index] = "URL: <a href='" + urls[index].url + "'>" + urls[index].label + "</a> " + "(" + urls[index].url + ")" + " | StatusCode: " + val
                             })
                             self.addTestReport(Object.assign(test, {
-                                result: "[" + statuses.join(",") + "]",
-                                message: "<br />" + messages.join("<br />"),
+                                result: finalStatus,
+                                message: "<br />[" + statuses.join(",") + "]" + "<br />" + messages.join("<br />"),
                                 urls: urls
                             }), index, testCompleteCallBack)
                         })
@@ -232,11 +234,13 @@
             return opened
         };
         this.playSound = function (timeMs, callback) {
-            var audio = new Audio(soundUrl)
-            audio.play()
+            var audio = document.createElement('audio')
+            audio.id = "audioPlayer"
+            document.body.appendChild(audio)
+            audio.src = soundUrl
+            audio.autoplay = true;
             setTimeout(function () {
-                audio.pause()
-                audio.currentTime = 0
+                document.body.removeChild(audio)
                 callback()
             }, timeMs);
         };

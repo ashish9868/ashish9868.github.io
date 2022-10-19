@@ -28,7 +28,22 @@
                 }
             ],
             "name": "Test Group URL",
-            "description": "Verifying Google Url is up"
+            "description": "Verifying Group of Url(s) are up"
+        },
+        {
+            "type": "VALIDATE_URL",
+            "urls": [
+                {
+                    "url": "https://google.com",
+                    "label": "Google valid url"
+                },
+                {
+                    "url": "https://google.com/404",
+                    "label": "Google invalid url"
+                }
+            ],
+            "name": "Test Group URL: with valid and invalid URL",
+            "description": "Verifying Group of Url(s) are up (with partial success)"
         },
         {
             "type": "VALIDATE_URL",
@@ -39,7 +54,7 @@
                 }
             ],
             "name": "Test URL",
-            "description": "Verifying Google Url is up"
+            "description": "Verifying Catholic Virtual Url is up"
         },
         {
             "type": "VALIDATE_URL",
@@ -50,7 +65,7 @@
                 }
             ],
             "name": "Test URL",
-            "description": "Verifying Google Url is up"
+            "description": "Verifying Agilixbuzz Url is up"
         },
         {
             "type": "VALIDATE_URL",
@@ -61,7 +76,18 @@
                 }
             ],
             "name": "Test URL: Zoom",
-            "description": "Verifying Google Url is up"
+            "description": "Verifying Zoom Url is up"
+        },
+        {
+            "type": "VALIDATE_URL",
+            "urls": [
+                {
+                    "url": "https://google.com/404",
+                    "label": "404 URL"
+                }
+            ],
+            "name": "Test URL: 404 page",
+            "description": "Verifying 404 page url"
         },
         {
             "type": "SPEAKER",
