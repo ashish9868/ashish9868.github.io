@@ -125,7 +125,7 @@
                     }), index, testCompleteCallBack)
                     break;
                 case 'SPEAKER':
-                    self.toggleInfoModal(true, "Testing speakers", "You will hear a sound, once contined, please confirm when asked.", function () {
+                    self.toggleInfoModal(true, "Testing speakers", "You will hear a sound, once continued, please confirm when asked.", function () {
                         self.toggleInfoModal(false)
                         self.playSound(2000, function () {
                             self.toggleConfirmationModal(true, "Heard a sound?", "Please confirm if you've heard a sound?", function (status) {
@@ -169,7 +169,7 @@
                     }), index, testCompleteCallBack)
                     break;
                 case 'ZOOM':
-                    self.toggleInfoModal(true, 'Zoom App Test', 'You\'ll see a open zoom app popup, please confirm wether zoom app has opened up successfully.', function () {
+                    self.toggleInfoModal(true, 'Zoom App Test', 'You\'ll see a zoom app popup, please confirm whether zoom app has opened up successfully.', function () {
                         self.toggleInfoModal(false)
                         var newWin = window.open(test.url, '_blank', '')
                         const opened = !(!newWin || newWin.closed || typeof newWin.closed == "undefined")
@@ -179,7 +179,7 @@
                                 message: "Popups were disabled, unable to check zoom status.",
                             }), index, testCompleteCallBack)
                         } else {
-                            self.toggleConfirmationModal(true, "Zoom app Opened?", "Please confirm if you were able to open zoom app?", function (status) {
+                            self.toggleConfirmationModal(true, "Zoom app Opened?", "Please confirm, if you were able to open zoom app?", function (status) {
                                 self.toggleConfirmationModal(false)
                                 self.addTestReport(Object.assign(test, {
                                     result: status,

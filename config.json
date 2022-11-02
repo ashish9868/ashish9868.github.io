@@ -13,7 +13,7 @@
         {
             "type": "POPUP",
             "name": "Testing Popups",
-            "description": "Checking wether popup(s) are allowed or not."
+            "description": "Checking whether popup(s) are allowed or not."
         },
         {
             "type": "VALIDATE_URL",
@@ -92,7 +92,7 @@
         {
             "type": "SPEAKER",
             "name": "Test Speaker",
-            "description": "A sound is played for you, you will need to confirm wether speakers are working or not."
+            "description": "A sound is played for you, you will need to confirm whether speakers are working or not."
         },
         {
             "type": "MICROPHONE",
