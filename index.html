@@ -72,7 +72,7 @@
     <script>
         $(document).ready(function () {
             // reading config from a remote source (for now self server url)
-            $.get('/config.json', function (config) {
+            $.get('/config.json?t'+(new Date().getMilliseconds()), function (config) {
                 var featureUtility = new BrowserFeatureUtility(config);
                 featureUtility.begin();
             })
