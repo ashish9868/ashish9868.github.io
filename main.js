@@ -1,5 +1,6 @@
 (function () {
     var BrowserFeatureUtility = function (config = {}) {
+        var jwt = config.jwt || ''
         var dummyUrl = "https://google.com"
         var soundUrl = "/sample.mp3"
         var modalInformation = $('#modalInformation')
@@ -303,10 +304,9 @@
                     self.index++;
                     if (self.index > self.config.tests.length - 1) {
                         self.index = 0
-                        self.downloadReport(function () {
-                            self.toggleInfoModal(true, "Success", "All tests were performed, successfully, output json generated succesfully.", function () {
-                                self.toggleInfoModal(false)
-                            })
+                        self.toggleInfoModal(true, "Success", "All tests were performed, successfully, output json will be posted.", function () {
+                            self.toggleInfoModal(false)
+                            self.sendReport()
                         })
                     } else {
                         executeTest()
@@ -327,6 +327,20 @@
                 callback()
             }, 500)
 
+        }
+        this.sendReport = function () {
+            var self = this;
+            console.log(self.testResults)
+            $.ajax({
+                type: "POST",
+                url: window.location.href,
+                data: JSON.stringify(self.testResults),
+                headers: { "Authorization": "Bearer " + jwt },
+                complete: function (data) {
+                   alert("Success")
+                },
+                dataType: 'json'
+            });
         }
     }
 
