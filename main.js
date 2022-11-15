@@ -208,21 +208,7 @@
                         "Access-Control-Allow-Origin": "*",
                     },
                     complete: function (xhr) {
-                        if (xhr.status + "".indexOf("20") !== 0) {
-                            var img = new Image();
-                            img.src = url
-                            img.onload = function () {
-                                resolve(true)
-                            }
-                            img.onabort = function () {
-                                resolve(false)
-                            }
-                            img.onerror = function () {
-                                resolve(false)
-                            }
-                        } else {
-                            resolve(true)
-                        }
+                        resolve(xhr.status)
                     },
                 })
             })
