@@ -1,0 +1,304 @@
+/*
+    object-assign
+    (c) Sindre Sorhus
+    @license MIT
+    */
+
+/*
+ *          __        ___
+ *    _____/ /___  __/ (_)____
+ *   / ___/ __/ / / / / / ___/
+ *  (__  ) /_/ /_/ / / (__  )
+ * /____/\__/\__, /_/_/____/
+ *          /____/
+ *
+ * light - weight css preprocessor @licence MIT
+ */
+
+/*
+object-assign
+(c) Sindre Sorhus
+@license MIT
+*/
+
+/*!
+	Copyright (c) 2018 Jed Watson.
+	Licensed under the MIT License (MIT), see
+	http://jedwatson.github.io/classnames
+*/
+
+/*!
+       * Sizzle CSS Selector Engine v2.3.6
+       * https://sizzlejs.com/
+       *
+       * Copyright JS Foundation and other contributors
+       * Released under the MIT license
+       * https://js.foundation/
+       *
+       * Date: 2021-02-16
+       */
+
+/*!
+       * iCheck v1.0.2, http://git.io/arlzeA
+       * ===================================
+       * Powerful jQuery and Zepto plugin for checkboxes and radio buttons customization
+       *
+       * (c) 2013 Damir Sultanov, http://fronteed.com
+       * MIT Licensed
+       */
+
+/*!
+      Copyright (c) 2017 Jed Watson.
+      Licensed under the MIT License (MIT), see
+      http://jedwatson.github.io/classnames
+    */
+
+/*!
+     * Programatically add the following
+     */
+
+/*!
+     * jQuery JavaScript Library v3.6.0
+     * https://jquery.com/
+     *
+     * Includes Sizzle.js
+     * https://sizzlejs.com/
+     *
+     * Copyright OpenJS Foundation and other contributors
+     * Released under the MIT license
+     * https://jquery.org/license
+     *
+     * Date: 2021-03-02T17:08Z
+     */
+
+/*!
+   * Sizzle CSS Selector Engine v2.3.9
+   * https://sizzlejs.com/
+   *
+   * Copyright JS Foundation and other contributors
+   * Released under the MIT license
+   * https://js.foundation/
+   *
+   * Date: 2022-12-19
+   */
+
+/*!
+ * Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com
+ * License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License)
+ */
+
+/*!
+ * FullCalendar v3.10.5
+ * Docs & License: https://fullcalendar.io/
+ * (c) 2019 Adam Shaw
+ */
+
+/*!
+ * Quill Editor v1.3.7
+ * https://quilljs.com/
+ * Copyright (c) 2014, Jason Chen
+ * Copyright (c) 2013, salesforce.com
+ */
+
+/*!
+ * The buffer module from node.js, for the browser.
+ *
+ * @author   Feross Aboukhadijeh <http://feross.org>
+ * @license  MIT
+ */
+
+/*!
+ * is-plain-object <https://github.com/jonschlinkert/is-plain-object>
+ *
+ * Copyright (c) 2014-2017, Jon Schlinkert.
+ * Released under the MIT License.
+ */
+
+/*!
+ * isobject <https://github.com/jonschlinkert/isobject>
+ *
+ * Copyright (c) 2014-2017, Jon Schlinkert.
+ * Released under the MIT License.
+ */
+
+/*!
+ * jQuery JavaScript Library v3.6.3
+ * https://jquery.com/
+ *
+ * Includes Sizzle.js
+ * https://sizzlejs.com/
+ *
+ * Copyright OpenJS Foundation and other contributors
+ * Released under the MIT license
+ * https://jquery.org/license
+ *
+ * Date: 2022-12-20T21:28Z
+ */
+
+/*! AdminLTE app.js
+    * ================
+    * Main JS application file for AdminLTE v2. This file
+    * should be included in all pages. It controls some layout
+    * options and implements exclusive AdminLTE plugins.
+    *
+    * @Author  Almsaeed Studio
+    * @Support <https://www.almsaeedstudio.com>
+    * @Email   <abdullah@almsaeedstudio.com>
+    * @version 2.4.5
+    * @repository git://github.com/almasaeed2010/AdminLTE.git
+    * @license MIT <http://opensource.org/licenses/MIT>
+    */
+
+/*! Bootstrap 3 styling wrapper for Select
+     * ©2018 SpryMedia Ltd - datatables.net/license
+     */
+
+/*! DataTables 1.11.3
+     * ©2008-2021 SpryMedia Ltd - datatables.net/license
+     */
+
+/*! DataTables Bootstrap 3 integration
+     * ©2011-2015 SpryMedia Ltd - datatables.net/license
+     */
+
+/*! Select for DataTables 1.3.3
+     * 2015-2021 SpryMedia Ltd - datatables.net/license/mit
+     */
+
+/*! ieee754. BSD-3-Clause License. Feross Aboukhadijeh <https://feross.org/opensource> */
+
+/*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/facebook/regenerator/blob/main/LICENSE */
+
+/**
+               * @license almond 0.3.3 Copyright jQuery Foundation and other contributors.
+               * Released under MIT license, http://github.com/requirejs/almond/LICENSE
+               */
+
+/**
+ * @license React
+ * react.production.min.js
+ *
+ * Copyright (c) Facebook, Inc. and its affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+/** @license React v0.19.1
+ * scheduler.production.min.js
+ *
+ * Copyright (c) Facebook, Inc. and its affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+/** @license React v0.20.2
+ * scheduler.production.min.js
+ *
+ * Copyright (c) Facebook, Inc. and its affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+/** @license React v16.13.1
+     * react-is.production.min.js
+     *
+     * Copyright (c) Facebook, Inc. and its affiliates.
+     *
+     * This source code is licensed under the MIT license found in the
+     * LICENSE file in the root directory of this source tree.
+     */
+
+/** @license React v16.13.1
+ * react-is.production.min.js
+ *
+ * Copyright (c) Facebook, Inc. and its affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+/** @license React v16.14.0
+     * react-dom-server.browser.production.min.js
+     *
+     * Copyright (c) Facebook, Inc. and its affiliates.
+     *
+     * This source code is licensed under the MIT license found in the
+     * LICENSE file in the root directory of this source tree.
+     */
+
+/** @license React v16.14.0
+ * react-dom.production.min.js
+ *
+ * Copyright (c) Facebook, Inc. and its affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+/** @license React v16.14.0
+ * react.production.min.js
+ *
+ * Copyright (c) Facebook, Inc. and its affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+/** @license React v16.8.6
+     * react-is.production.min.js
+     *
+     * Copyright (c) Facebook, Inc. and its affiliates.
+     *
+     * This source code is licensed under the MIT license found in the
+     * LICENSE file in the root directory of this source tree.
+     */
+
+/** @license React v17.0.2
+ * react-dom-server.browser.production.min.js
+ *
+ * Copyright (c) Facebook, Inc. and its affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+/** @license React v17.0.2
+ * react-dom.production.min.js
+ *
+ * Copyright (c) Facebook, Inc. and its affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+/** @license React v17.0.2
+ * react-is.production.min.js
+ *
+ * Copyright (c) Facebook, Inc. and its affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+/** @license React v17.0.2
+ * react-jsx-runtime.production.min.js
+ *
+ * Copyright (c) Facebook, Inc. and its affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+/** @license React v17.0.2
+ * react.production.min.js
+ *
+ * Copyright (c) Facebook, Inc. and its affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+//! moment.js
