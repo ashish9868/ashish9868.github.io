@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SSHable Privacy Policy</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #0b1016;
+      --surface: #121922;
+      --text: #e8eef4;
+      --muted: #8b9bb0;
+      --accent: #3ddc97;
+      --border: #2c3a4d;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    main {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 32px 20px 64px;
+    }
+
+    header {
+      margin-bottom: 32px;
+      padding-bottom: 24px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    h1 {
+      margin: 0 0 8px;
+      font-size: 2rem;
+      letter-spacing: -0.03em;
+    }
+
+    .meta {
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    h2 {
+      margin: 32px 0 12px;
+      font-size: 1.2rem;
+      color: var(--accent);
+    }
+
+    p, li {
+      color: var(--text);
+    }
+
+    ul {
+      padding-left: 1.25rem;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 16px 18px;
+      margin: 16px 0;
+    }
+
+    footer {
+      margin-top: 40px;
+      padding-top: 20px;
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <h1>SSHable Privacy Policy</h1>
+      <p class="meta">
+        App: SSHable<br>
+        Package: in.madebyashish.sshable<br>
+        Effective date: September 13, 2025<br>
+        Last updated: September 13, 2025
+      </p>
+    </header>
+
+    <p>
+      SSHable ("the App") is a mobile SSH client developed by Made by Ashish ("we", "us", or "our").
+      This Privacy Policy explains how the App handles information when you use it.
+    </p>
+
+    <div class="card">
+      <strong>Summary:</strong> SSHable stores your SSH connection settings and credentials on your device.
+      SSH traffic goes directly between your device and the servers you configure. We do not operate backend
+      servers for SSH sessions, and we do not sell your personal data.
+    </div>
+
+    <h2>1. Information We Do Not Collect</h2>
+    <p>SSHable does not require account registration and does not collect the following through our own servers:</p>
+    <ul>
+      <li>Name, email address, or phone number</li>
+      <li>Location data</li>
+      <li>Contacts, photos, or other unrelated device content</li>
+      <li>Analytics, advertising identifiers, or usage tracking for marketing</li>
+      <li>Contents of your SSH terminal sessions</li>
+    </ul>
+    <p>
+      We do not operate a cloud service that receives your SSH commands, terminal output, or server credentials.
+    </p>
+
+    <h2>2. Information Stored on Your Device</h2>
+    <p>
+      To provide SSH functionality, the App stores data locally on your device, including:
+    </p>
+    <ul>
+      <li>Connection profiles (name, host, port, and optional host fingerprint)</li>
+      <li>SSH identities (name and username)</li>
+      <li>Passwords and SSH private keys used for authentication</li>
+      <li>SSH tunnel configuration (local, remote, and dynamic/SOCKS settings)</li>
+      <li>App preferences such as onboarding completion and Pro unlock status</li>
+    </ul>
+    <p>
+      Passwords and private keys are encrypted on-device using AES-256-GCM before being saved in the App database.
+      An encryption key is stored in the device's secure storage (Android Keystore / platform secure storage).
+      Key passphrases, if provided, are stored in the local database.
+    </p>
+    <p>
+      If you use the file picker to import an SSH private key, the App reads only the file you select and stores
+      its contents locally for authentication. The App does not upload imported key files to our servers.
+    </p>
+
+    <h2>3. SSH Connections and Network Use</h2>
+    <p>
+      SSHable connects directly from your device to the SSH servers you configure. Network communication is
+      limited to what is needed to establish and maintain SSH sessions and tunnels.
+    </p>
+    <ul>
+      <li>Server hostnames, IP addresses, and ports are determined by you</li>
+      <li>Terminal input and output travel between your device and the remote server</li>
+      <li>We do not intercept, log, or store your SSH session traffic on developer-operated servers</li>
+    </ul>
+    <p>
+      You are responsible for the servers you connect to and for protecting your credentials and remote systems.
+    </p>
+
+    <h2>4. Background Operation</h2>
+    <p>
+      While an SSH session is active, the App may run a foreground service and show a persistent notification
+      so the connection can remain active in the background. This service operates on your device and is used
+      only to maintain your active SSH sessions and tunnels.
+    </p>
+
+    <h2>5. In-App Purchases</h2>
+    <p>
+      SSHable offers an optional one-time Pro upgrade through Google Play Billing. Purchases are processed by
+      Google Play, not directly by us. We receive purchase confirmation from Google Play to unlock Pro features
+      on your device and store a local entitlement flag in secure storage.
+    </p>
+    <p>
+      Payment information is handled by Google according to
+      <a href="https://policies.google.com/privacy" rel="noopener noreferrer">Google's Privacy Policy</a>.
+    </p>
+
+    <h2>6. Android Permissions</h2>
+    <p>The App may request or use the following permissions:</p>
+    <ul>
+      <li><strong>Internet</strong> — to connect to SSH servers you configure</li>
+      <li><strong>Foreground service</strong> — to keep active SSH sessions running in the background</li>
+      <li><strong>Billing</strong> — to process the optional Pro in-app purchase through Google Play</li>
+    </ul>
+
+    <h2>7. Data Sharing</h2>
+    <p>We do not sell or rent your personal information. Information may be shared only in these limited cases:</p>
+    <ul>
+      <li>
+        <strong>Google Play</strong> — when you purchase or restore the Pro upgrade, Google processes the transaction
+      </li>
+      <li>
+        <strong>Your SSH servers</strong> — credentials and session data are sent only to servers you choose to connect to
+      </li>
+      <li>
+        <strong>Legal requirements</strong> — if required by applicable law, regulation, or valid legal process
+      </li>
+    </ul>
+
+    <h2>8. Data Security</h2>
+    <p>
+      We use on-device encryption and platform secure storage to help protect sensitive credentials. No method of
+      storage or transmission is completely secure. You should use strong passwords, protect your device with a
+      screen lock, and follow security best practices on your servers.
+    </p>
+
+    <h2>9. Data Retention and Deletion</h2>
+    <p>
+      Your connection profiles, identities, tunnels, and related data remain on your device until you delete them
+      in the App or uninstall the App. Uninstalling SSHable removes locally stored App data from your device,
+      subject to platform behavior.
+    </p>
+
+    <h2>10. Children's Privacy</h2>
+    <p>
+      SSHable is not directed to children under 13, and we do not knowingly collect personal information from
+      children. If you believe a child has provided personal information through the App, please contact us so we
+      can assist with removal where applicable.
+    </p>
+
+    <h2>11. International Users</h2>
+    <p>
+      Because SSHable stores data locally on your device and connects directly to servers you choose, your data
+      may be processed in any country where your device or target servers are located.
+    </p>
+
+    <h2>12. Changes to This Policy</h2>
+    <p>
+      We may update this Privacy Policy from time to time. When we do, we will revise the "Last updated" date at
+      the top of this page. Continued use of the App after changes become effective means you accept the updated
+      policy.
+    </p>
+
+    <h2>13. Contact Us</h2>
+    <p>
+      If you have questions about this Privacy Policy or SSHable, contact us at:
+    </p>
+    <ul>
+      <li>Email: <a href="mailto:contact@madebyashish.in">contact@madebyashish.in</a></li>
+      <li>GitHub: <a href="https://github.com/ashish9868/made_by_ashish_ssh_client/issues" rel="noopener noreferrer">Project issues</a></li>
+    </ul>
+
+    <footer>
+      &copy; 2025 Made by Ashish. All rights reserved.
+    </footer>
+  </main>
+</body>
+</html>
